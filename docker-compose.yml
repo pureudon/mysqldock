@@ -1,0 +1,28 @@
+# docker run --rm -d -p 3306:3306 --name mysqldock -e MYSQL_USER=pureudonhk -e MYSQL_PASSWORD=pureudonhk mysql:5.7.19
+# docker run --rm -p 3306:3306 --name mysqldock -e MYSQL_ROOT_PASSWORD=pureudonhk mysql:5.7.19
+
+version: '3'
+
+services:
+
+  db:
+    container_name: mysqldock
+    volumes:
+      - ./mysqldb/var/bin/mysql/:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    image: mysql:5.7.19
+    # restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pureudonhk
+      # MYSQL_DATABASE:
+      MYSQL_USER: pureudonhk
+      MYSQL_PASSWORD: pureudonhk
+
+
+# volumes:
+#     db_data:
+
+
+# docker-compose up -d
+# docker-compose down --volumes 
